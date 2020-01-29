@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19E1A1C523E1F36900C33594 /* module.modulemap in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2C8F321C6BBD7200846019 /* module.modulemap */; };
 		4B47970A22A9AE1F00FF9C2E /* BugsnagCrashReportFromKSCrashReportTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B47970922A9AE1F00FF9C2E /* BugsnagCrashReportFromKSCrashReportTest.m */; };
 		4B775FCF22CBDEB4004839C5 /* BugsnagCollectionsBSGDictInsertIfNotNilTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B775FCE22CBDEB4004839C5 /* BugsnagCollectionsBSGDictInsertIfNotNilTest.m */; };
 		4BE6C42622CAD61A0056305D /* BugsnagCollectionsBSGDictMergeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE6C42522CAD61A0056305D /* BugsnagCollectionsBSGDictMergeTest.m */; };
@@ -391,6 +392,7 @@
 				E7397EED1F83CFC20034242A /* BugsnagNotifier.h in CopyFiles */,
 				E7397EEE1F83CFC20034242A /* BugsnagSink.h in CopyFiles */,
 				E7397EEF1F83CFC20034242A /* BugsnagHandledState.h in CopyFiles */,
+				19E1A1C523E1F36900C33594 /* module.modulemap in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
