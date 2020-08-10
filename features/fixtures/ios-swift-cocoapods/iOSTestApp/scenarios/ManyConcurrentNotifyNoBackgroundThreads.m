@@ -1,17 +1,16 @@
-#import "ManyConcurrentNotifyScenario.h"
-#import <Bugsnag/Bugsnag.h>
+#import "ManyConcurrentNotifyNoBackgroundThreads.h"
 
-@interface ManyConcurrentNotifyScenario ()
+@interface ManyConcurrentNotifyNoBackgroundThreads ()
 @property (nonatomic) dispatch_queue_t queue1;
 @property (nonatomic) dispatch_queue_t queue2;
 @end
 
-@interface FooError : NSError
+@interface BarError : NSError
 @end
-@implementation FooError
+@implementation BarError
 @end
 
-@implementation ManyConcurrentNotifyScenario
+@implementation ManyConcurrentNotifyNoBackgroundThreads
 
 - (instancetype)initWithConfig:(BugsnagConfiguration *)config {
     if (self = [super initWithConfig:config]) {
@@ -24,7 +23,7 @@
 - (void)run {
     for (int i = 0; i < 4; i++) {
         NSString *message = [NSString stringWithFormat:@"Err %ld", (long)i];
-        [self logError:[FooError errorWithDomain:@"com.example"
+        [self logError:[BarError errorWithDomain:@"com.example"
                                             code:401 + i
                                         userInfo:@{NSLocalizedDescriptionKey: message}]];
     }
@@ -42,6 +41,6 @@
 - (void)startBugsnag {
     self.config.autoTrackSessions = NO;
     [super startBugsnag];
+    [Bugsnag setSuspendThreadsForUserReported:NO];
 }
-
 @end

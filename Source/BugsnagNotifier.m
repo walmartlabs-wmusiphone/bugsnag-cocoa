@@ -47,7 +47,7 @@
 #import <AppKit/AppKit.h>
 #endif
 
-NSString *const NOTIFIER_VERSION = @"5.23.0";
+NSString *const NOTIFIER_VERSION = @"5.23.5";
 NSString *const NOTIFIER_URL = @"https://github.com/bugsnag/bugsnag-cocoa";
 NSString *const BSTabCrash = @"crash";
 NSString *const BSAttributeDepth = @"depth";
@@ -471,7 +471,7 @@ NSString *const kAppWillTerminate = @"App Will Terminate";
 
     #if TARGET_OS_TV || TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
     foregroundName = UIApplicationWillEnterForegroundNotification;
-    backgroundName = UIApplicationWillEnterForegroundNotification;
+    backgroundName = UIApplicationDidEnterBackgroundNotification;
     #elif TARGET_OS_MAC
     foregroundName = NSApplicationWillBecomeActiveNotification;
     backgroundName = NSApplicationDidFinishLaunchingNotification;
@@ -802,8 +802,7 @@ NSString *const kAppWillTerminate = @"App Will Terminate";
 
 - (void)lowMemoryWarning:(NSNotification *)notif {
     [[self state] addAttribute:BSEventLowMemoryWarning
-                     withValue:[[Bugsnag payloadDateFormatter]
-                                   stringFromDate:[NSDate date]]
+                     withValue:[BSG_RFC3339DateTool stringFromDate:[NSDate date]]
                  toTabWithName:BSGKeyDeviceState];
     if ([self.configuration automaticallyCollectBreadcrumbs]) {
         [self sendBreadcrumbForNotification:notif];
